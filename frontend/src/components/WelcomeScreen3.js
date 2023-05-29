@@ -11,9 +11,10 @@ export default function WelcomeScreen3() {
   
   return (
     <View style={styles.WelcomeScreen3}>
-        <View style={styles.NavBar88Pt}>
-        
-        <Text style={styles.SignIn}>Sign In</Text>
+      <View style={styles.NavBar88Pt}>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <Text style={styles.SignIn}>Sign In</Text>
+            </TouchableOpacity>
       </View>
       <View style={styles.Group621}>
         

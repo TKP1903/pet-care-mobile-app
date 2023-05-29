@@ -11,8 +11,9 @@ export default function WelcomeScreen1() {
   return (
     <View style={styles.WelcomeScreen1}>
       <View style={styles.NavBar88Pt}>
-         
-          <Text style={styles.SignIn}>Sign In</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <Text style={styles.SignIn}>Sign In</Text>
+            </TouchableOpacity>
       </View>
       <View style={styles.Group656}>
         

@@ -6,6 +6,10 @@ import WelcomeScreen2 from './frontend/src/components/WelcomeScreen2';
 import WelcomeScreen3 from './frontend/src/components/WelcomeScreen3';
 import Registration from './frontend/src/components/Registration';
 import Home from './frontend/src/components/Home';
+import Login from './frontend/src/components/Login';
+import AddPetDetailsPopUp from './frontend/src/components/AddPetDetailsPopUp';
+import AddPetDetailScreen from './frontend/src/components/AddPetDetailsScreen';
+import VeterinaryNearMe from './frontend/src/components/VeterinaryNearMe';
 
 const Stack = createStackNavigator();
 
@@ -42,6 +46,31 @@ function App() {
           component={Home} 
           options={{ headerShown: false }} // hide header for this screen
         />
+      {/* <Stack.Screen 
+            name="AddPetDetailsPopUp" 
+            component={AddPetDetailsPopUp} 
+            options={{ headerShown: false }} // hide header for this screen
+              /> */}
+
+      <Stack.Screen 
+            name="Login" 
+            component={Login} 
+            options={{ headerShown: false }} // hide header for this screen
+              />
+
+      <Stack.Screen 
+            name="AddPetDetailScreen" 
+            component={AddPetDetailScreen} 
+            options={{ headerShown: false }} // hide header for this screen
+              />
+
+      <Stack.Screen 
+            name="VeterinaryNearMe" 
+            component={VeterinaryNearMe} 
+            options={{ headerShown: false }} // hide header for this screen
+              />
+
+
 
       </Stack.Navigator>
     </NavigationContainer>

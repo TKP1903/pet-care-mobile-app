@@ -3,6 +3,7 @@ import { StyleSheet, Image, Text, View, ImageBackground,Dimensions,TouchableOpac
 import { TextInput } from "react-native-gesture-handler";
 import { API_URL } from "../../key";
 import { useNavigation } from '@react-navigation/native';
+import { ToastAndroid } from 'react-native';
 import axios from 'axios';
 
 
@@ -32,9 +33,11 @@ export default function Registration() {
 
       }, );
       console.log(response.data);
+      ToastAndroid.show('Registered successfully', ToastAndroid.SHORT);
       navigation.navigate('Home');
     } catch (error) {
       console.error(error);
+      ToastAndroid.show('Registration failed', ToastAndroid.SHORT);
     }
   };
 
@@ -90,7 +93,7 @@ export default function Registration() {
       style={styles.input}
       placeholder="Enter your password"
       placeholderTextColor="#7C7C7C"
-      // secureTextEntry={true}
+      secureTextEntry={true}
       onChangeText={text => setPassword(text)}
     />
       </View>
@@ -153,11 +156,13 @@ export default function Registration() {
           />
         </View>
         <View style={styles.SignIn1}>
-          <Text style={styles.AlreadyHaveAnAccount}>
-            Already have an account?
-          </Text>
-          <Text style={styles.SignIn}>Sign In</Text>
-        </View>
+            <Text style={styles.AlreadyHaveAnAccount}>
+              Already have an account?
+            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <Text style={styles.SignIn}>Sign In</Text>
+            </TouchableOpacity>
+          </View>
       </View>
      
      
@@ -206,7 +211,7 @@ const styles = StyleSheet.create({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  backgroundColor: "#F9F8FD",
+  backgroundColor: "#FFFFFF",
   borderRadius: 15,
   padding: height * 0.02,
   marginTop: height * 0.92

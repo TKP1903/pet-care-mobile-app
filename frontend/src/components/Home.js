@@ -1,7 +1,15 @@
-import React from "react";
-import { View, Text, StyleSheet,Image } from "react-native";
+import React, { useState } from 'react';
+import { View, Text, StyleSheet,Image,Dimensions,Button,Modal,TouchableOpacity } from "react-native";
+import AddPetDetailsPopUp from "./AddPetDetailsPopUp";
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
+  const navigation = useNavigation();
+  const [showPopUp, setShowPopUp] = useState(true);
+  const togglePopUp = () => {
+    setShowPopUp(!showPopUp);
+  };
+
   return (
     <View style={styles.SearchMain}>
       <View style={styles.Group399}>
@@ -18,15 +26,17 @@ const Home = () => {
       />
       <View style={styles.Services}>
         <View style={styles.Group854}>
-          <View style={styles.IconTypeOfServiceUiNormal}>
-            <Image
-              style={styles.IconVet}
-              source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/f12n8d8kdn9-I998%3A27242%3B238%3A5923?alt=media&token=cd7bdeec-1497-4575-80db-b59eb47a5235",
-              }}
-            />
-            <Text style={styles.Veterinary}>Veterinary</Text>
-          </View>
+        <TouchableOpacity onPress={() => navigation.navigate('VeterinaryNearMe')}>
+            <View style={styles.IconTypeOfServiceUiNormal}>
+              <Image
+                style={styles.IconVet}
+                source={{
+                  uri: 'https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/f12n8d8kdn9-I998%3A27242%3B238%3A5923?alt=media&token=cd7bdeec-1497-4575-80db-b59eb47a5235',
+                }}
+              />
+              <Text style={styles.Veterinary}>Veterinary</Text>
+            </View>
+        </TouchableOpacity>
 
           <View style={styles.IconTypeOfServiceUiNormal1}>
                   <Image
@@ -111,11 +121,19 @@ const Home = () => {
         />
       </View>
       </View>
+
+      <Modal visible={showPopUp} animationType="slide" transparent>
+    <View style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)', justifyContent: 'flex-end' }}>
+      <AddPetDetailsPopUp onClose={togglePopUp} />
+    </View>
+  </Modal>
      
     </View>
   )
 }
 
+
+const { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   SearchMain: {
     flex: 1,
@@ -129,27 +147,25 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
-    height: 120,
+    height: height * 0.15, // set height to 15% of screen height
     boxSizing: "border-box",
-    top:160
-  },
-  NavBar88Pt: {
-    width: "100%",
-    height: 88,
+    top: height * 0.2, // set top position to 20% of screen height
   },
   WhatAreYouLookingFor: {
     color: "rgba(7,8,33,1)",
-    fontSize: 34,
-    lineHeight: 34,
+    fontSize: width * 0.08, // set font size to 8% of screen width
+    lineHeight: width * 0.08, // set line height to 8% of screen width
     fontFamily: "Encode Sans, sans-serif",
     fontWeight: "700",
   },
+ 
+ 
   Menu: {
     position: "absolute",
-    top: 44,
-    left: 331,
-    width: 45,
-    height: 45,
+    top: height * 0.05, // set top position to 5% of screen height
+    left: width * 0.85, // set left position to 50% of screen width
+    width: width * 0.1, // set width to 10% of screen width
+    height: width * 0.1, // set height to 10% of screen width
   },
   Services: {
     position: "absolute",
@@ -382,19 +398,19 @@ const styles = StyleSheet.create({
   },
   BottomNavigationNew: {
     position: "absolute",
-    top: 650,
+    bottom: 0, // set to bottom of screen
     display: "flex",
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "space-between", // change to space-between for spacing
     alignItems: "center",
     width: "100%",
-    height: 100,
-    paddingLeft: 40,
-    paddingRight: 41,
-    paddingTop: 4,
-    paddingBottom: 46,
+    height: height * 0.1, // set to 10% of screen height
+    paddingLeft: width * 0.12, // set to 10% of screen width
+    paddingRight: width * 0.1, // set to 10% of screen width
+    paddingTop: height * 0.01, // set to 1% of screen height
+    paddingBottom: height * 0.01, // set to 1% of screen height
     boxSizing: "border-box",
-    
+    backgroundColor: "#fff", // add background color
   },
   
   Group949: {
@@ -403,29 +419,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "100%",
     boxSizing: "border-box",
-   
     
   },
+  
   Image1488: {
-    width: 19.37,
-    height: 21,
-    marginRight: 25,
-   
+    width: 30, // increase width to 30
+    height: 30, // increase height to 30
+    marginRight: 50, // decrease margin right to 20
   },
+  
   Image1486: {
-    width: 27,
-    height: 21,
-    marginRight: 25,
+    width: 40, // increase width to 40
+    height: 30, // keep height the same
+    marginRight: 50, // decrease margin right to 20
   },
+  
   Image40: {
-    width: 18,
-    height: 19,
-    marginRight: 25,
+    width: 25, // increase width to 25
+    height: 25, // increase height to 25
+    marginRight: 50, // decrease margin right to 20
   },
+  
   Image41: {
-    width: 34,
-    height: "100%",
-    marginRight: 25,
+    width: 50, // increase width to 50
+    height: "100%", // set height to 100%
+    marginRight: 50, // decrease margin right to 20
   },
  
 })
