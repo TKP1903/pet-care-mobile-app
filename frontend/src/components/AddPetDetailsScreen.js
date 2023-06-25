@@ -34,18 +34,18 @@ export default function AddPetDetailScreen ()  {
     setIsMaleActive(false); // set the state to false for Male
   };
 
-  const showCalendar = () => {
-    setCalendarVisible(true);
-  };
+  // const showCalendar = () => {
+  //   setCalendarVisible(true);
+  // };
 
-  const hideCalendar = () => {
-    setCalendarVisible(false);
-  };
+  // const hideCalendar = () => {
+  //   setCalendarVisible(false);
+  // };
 
-  const handleDateChange = (day) => {
-    setDate(day.dateString);
-    hideCalendar();
-  };
+  // const handleDateChange = (day) => {
+  //   setDate(day.dateString);
+  //   hideCalendar();
+  // };
 
   const handleNeuteredToggle = () => {
     setNeutered(!neutered);
